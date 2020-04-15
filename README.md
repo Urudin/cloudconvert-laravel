@@ -1,11 +1,5 @@
 # CloudConvert Laravel API
 
----
-
-**Deprecation warning: I don't have the time to support this package any more please use the [official CloudConvert Laravel package](https://github.com/cloudconvert/cloudconvert-laravel) instead**
-
----
-
 A Laravel wrapper for the CloudConvert API. See [https://cloudconvert.com](https://cloudconvert.com) for more details.
 
 [![Build Status](https://travis-ci.org/robbiepaul/cloudconvert-laravel.svg?branch=v0.1)](https://travis-ci.org/robbiepaul/cloudconvert-laravel) [![Latest Stable Version](https://poser.pugx.org/robbiep/cloudconvert-laravel/v/stable)](https://packagist.org/packages/robbiep/cloudconvert-laravel) [![Total Downloads](https://poser.pugx.org/robbiep/cloudconvert-laravel/downloads)](https://packagist.org/packages/robbiep/cloudconvert-laravel) [![Latest Unstable Version](https://poser.pugx.org/robbiep/cloudconvert-laravel/v/unstable)](https://packagist.org/packages/robbiep/cloudconvert-laravel) [![License](https://poser.pugx.org/robbiep/cloudconvert-laravel/license)](https://packagist.org/packages/robbiep/cloudconvert-laravel)
@@ -18,21 +12,15 @@ Install this package through [Composer](https://getcomposer.org/).
 
 Add this to your `composer.json` dependencies:
 
-### Using Laravel 5.0+
+### Using Laravel 7.0+
 
 ```js
 "require": {
-   "robbiep/cloudconvert-laravel": "2.*"
+   "lingwave/cloudconvert-laravel": "1.*"
 }
 ```
 
-### Using Laravel ~4.2
-
-```js
-"require": {
-   "robbiep/cloudconvert-laravel": "1.*@dev"
-}
-```
+For older versions of laravel see https://github.com/robbiepaul/cloudconvert-laravel
 
 Run `composer install` to download the required files.
 
@@ -41,7 +29,7 @@ Next you need to add the service provider to `config/app.php`
 ```php
 'providers' => array(
     ...
-    RobbieP\CloudConvertLaravel\CloudConvertLaravelServiceProvider::class
+    Laravel\CloudConvertLaravel\CloudConvertLaravelServiceProvider::class
 )
 ```
 One more step. 

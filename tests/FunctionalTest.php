@@ -40,7 +40,7 @@ class FunctionalTest extends BaseTest {
 		$this->assertSame($this->cloudConvert->getInputFormat(), 'jpg');
 		$this->assertSame($this->cloudConvert->getOutputFormat(), 'png');
 		$this->assertSame($this->cloudConvert->getInput()->getMethod(),'upload');
-		$this->assertInstanceOf('\RobbieP\CloudConvertLaravel\Process',$this->cloudConvert->getProcess());
+		$this->assertInstanceOf('\Lingwave\CloudConvertLaravel\Process',$this->cloudConvert->getProcess());
 	}
 
 	public function testMakeWithTwoInputs()

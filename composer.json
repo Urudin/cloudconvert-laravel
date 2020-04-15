@@ -1,5 +1,5 @@
 {
-    "name": "robbiep/cloudconvert-laravel",
+    "name": "lingwave/cloudconvert-laravel",
     "description": "A Laravel wrapper for the CloudConvert API",
     "keywords": ["cloudconvert", "laravel", "laravel4", "laravel5", "screenshot", "conversion", "office", "documents"],
     "license": "MIT",
@@ -7,6 +7,10 @@
         {
             "name": "Robbie Paul",
             "email": "robbiepaul@me.com"
+        },
+        {
+            "name": "Lingwave",
+            "email": "dev@lingwave.com"
         }
     ],
     "require": {
@@ -22,16 +26,16 @@
     },
     "autoload": {
         "psr-0": {
-            "RobbieP\\CloudConvertLaravel\\": "src/"
+            "Lingwave\\CloudConvertLaravel\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "RobbieP\\CloudConvertLaravel\\CloudConvertLaravelServiceProvider"
+                "Lingwave\\CloudConvertLaravel\\CloudConvertLaravelServiceProvider"
             ],
             "aliases": {
-                "CloudConvert": "RobbieP\\CloudConvertLaravel\\Facades\\CloudConvert"
+                "CloudConvert": "Lingwave\\CloudConvertLaravel\\Facades\\CloudConvert"
             }
         }
     },

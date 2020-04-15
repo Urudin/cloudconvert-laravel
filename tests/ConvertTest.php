@@ -4,7 +4,7 @@ class ConvertTest extends BaseTest {
 
 	public function testConvertLocalFileWorks()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
 		$this->assertSame('jpeg', $convertLocalFile->getFormat());
 		$this->assertSame('a-image.four_4.jpeg', $convertLocalFile->getFilename());
 		$this->assertSame('/example/path/to', $convertLocalFile->getPath());
@@ -22,7 +22,7 @@ class ConvertTest extends BaseTest {
 				'getPathname'                => '/tmp/image-1.jpg'
 			]
 		);
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile($uploaded_file);
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile($uploaded_file);
 		$this->assertSame('jpg', $convertLocalFile->getFormat());
 		$this->assertSame('image-1.jpg', $convertLocalFile->getFilename());
 		$this->assertSame('/tmp', $convertLocalFile->getPath());
@@ -32,7 +32,7 @@ class ConvertTest extends BaseTest {
 
 	public function testConvertLocalFileSaves()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
 
 		$fileSystem = Mockery::mock(
 			'\Illuminate\Filesystem\Filesystem',
@@ -51,7 +51,7 @@ class ConvertTest extends BaseTest {
 	 */
 	public function testExceptionIfFilenotwritable()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
 
 		$fileSystem = Mockery::mock(
 			'\Illuminate\Filesystem\Filesystem',
@@ -70,7 +70,7 @@ class ConvertTest extends BaseTest {
 	 */
 	public function testExceptionIfNotDataHasBeenSet()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/to/a-image.four_4.jpeg');
 
 		$fileSystem = Mockery::mock(
 			'\Illuminate\Filesystem\Filesystem',
@@ -89,13 +89,13 @@ class ConvertTest extends BaseTest {
 	 */
 	public function testConvertLocalFileThrowsExceptionIfOnlyPathGiven()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/');
 		$convertLocalFile->getFormat();
 	}
 
 	public function testConvertLocalFileSetFormatWorksOnPath()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/');
 		$convertLocalFile->setFormat('png');
 		$this->assertSame('/example/path', $convertLocalFile->getPath());
 		$this->assertSame('png', $convertLocalFile->getFormat());
@@ -103,14 +103,14 @@ class ConvertTest extends BaseTest {
 
 	public function testConvertLocalFileSetFilenameReturnsCorrectFormat()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/');
 		$convertLocalFile->setFilename('test.mov');
 		$this->assertSame('mov', $convertLocalFile->getFormat());
 	}
 
 	public function testCorrectFilenameIfExtensionGiven()
 	{
-		$convertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/example/path/');
+		$convertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/example/path/');
 		$convertLocalFile->setFilename('a-nice-pdf-file.pdf', 'jpg');
 		$this->assertSame('a-nice-pdf-file.jpg', $convertLocalFile->getFilename());
 		$this->assertSame('jpg', $convertLocalFile->getFormat());
@@ -118,7 +118,7 @@ class ConvertTest extends BaseTest {
 
 	public function testWebsiteInput()
 	{
-		$convertWebsite = new \RobbieP\CloudConvertLaravel\ConvertWebsite('google.co.uk');
+		$convertWebsite = new \Lingwave\CloudConvertLaravel\ConvertWebsite('google.co.uk');
 		$this->assertSame('website', $convertWebsite->getFormat());
 		$this->assertContains('googlecouk', $convertWebsite->getFilename());
 		$this->assertSame('url', $convertWebsite->getMethod());
@@ -126,7 +126,7 @@ class ConvertTest extends BaseTest {
 
 	public function testRemoteFileInput()
 	{
-		$convertWebsite = new \RobbieP\CloudConvertLaravel\ConvertRemoteFile('http://mirrors.creativecommons.org/presskit/icons/cc.large.png');
+		$convertWebsite = new \Lingwave\CloudConvertLaravel\ConvertRemoteFile('http://mirrors.creativecommons.org/presskit/icons/cc.large.png');
 		$this->assertSame('png', $convertWebsite->getFormat());
 		$this->assertSame('cc.large.png', $convertWebsite->getFilename());
 		$this->assertSame('download', $convertWebsite->getMethod());
@@ -134,8 +134,8 @@ class ConvertTest extends BaseTest {
 
 	public function testOnlyOutputFormatGiven()
 	{
-		$inputConvertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('/a/local/path/test.image.jpg');
-		$outputConvertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertLocalFile('png');
+		$inputConvertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('/a/local/path/test.image.jpg');
+		$outputConvertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertLocalFile('png');
 
 		$this->assertSame('png', $outputConvertLocalFile->getFormat());
 		$this->assertSame('jpg', $inputConvertLocalFile->getFormat());
@@ -155,18 +155,18 @@ class ConvertTest extends BaseTest {
 
 	public function testStorageOption()
 	{
-        $config = Mockery::mock('\RobbieP\CloudConvertLaravel\Config', [
+        $config = Mockery::mock('\Lingwave\CloudConvertLaravel\Config', [
             'get' => 'value'
         ]);
-        $s3StorageFile = new \RobbieP\CloudConvertLaravel\StorageS3($config);
+        $s3StorageFile = new \Lingwave\CloudConvertLaravel\StorageS3($config);
         $s3StorageFile->setOptions(['path' => 'hello.mp4']);
-        $outputConvertLocalFile = new \RobbieP\CloudConvertLaravel\ConvertStorage($s3StorageFile);
+        $outputConvertLocalFile = new \Lingwave\CloudConvertLaravel\ConvertStorage($s3StorageFile);
 		$this->assertSame('mp4', $outputConvertLocalFile->getFormat());
 	}
 
 	public function testGuzzle6AdapterOutputFlattenMultipart()
 	{
-        $adapter = new \RobbieP\CloudConvertLaravel\HttpClientAdapter\Guzzle6Adapter();
+        $adapter = new \Lingwave\CloudConvertLaravel\HttpClientAdapter\Guzzle6Adapter();
         $outputArray = [
             's3' => [
                 'accesskeyid' => 'accesskeyidXXX',
@@ -190,7 +190,7 @@ class ConvertTest extends BaseTest {
 
 	public function testGuzzle6AdapterOutputNonFlatten()
 	{
-        $adapter = new \RobbieP\CloudConvertLaravel\HttpClientAdapter\Guzzle6Adapter();
+        $adapter = new \Lingwave\CloudConvertLaravel\HttpClientAdapter\Guzzle6Adapter();
 
         $outputMultipartContent = $adapter->getMultipartContent('file', 'test.jpg');
 

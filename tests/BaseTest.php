@@ -20,8 +20,8 @@ abstract class BaseTest extends PHPUnit_Framework_TestCase {
 		date_default_timezone_set('Europe/London');
 		self::bootstrapLaravel();
 		parent::__construct();
-		$this->config = Mockery::mock('\RobbieP\CloudConvertLaravel\Config')->shouldReceive('get')->andReturn('VALUE');
-		$this->cloudConvert = new \RobbieP\CloudConvertLaravel\CloudConvert();
+		$this->config = Mockery::mock('\Lingwave\CloudConvertLaravel\Config')->shouldReceive('get')->andReturn('VALUE');
+		$this->cloudConvert = new \Lingwave\CloudConvertLaravel\CloudConvert();
 		$client = $this->mockClient();
 		$this->cloudConvert->setClient($client);
 	}
@@ -76,7 +76,7 @@ abstract class BaseTest extends PHPUnit_Framework_TestCase {
 	public function mockInputStorageS3()
 	{
 		$storage = Mockery::mock(
-			'\RobbieP\CloudConvertLaravel\StorageS3',
+			'\Lingwave\CloudConvertLaravel\StorageS3',
 			[
 				'getMethod' => 's3',
 				'getPath'   => '/some/path/on/bucket/image-1.jpg'
@@ -88,7 +88,7 @@ abstract class BaseTest extends PHPUnit_Framework_TestCase {
 	public function mockInputStorageFTP()
 	{
 		$storage = Mockery::mock(
-			'\RobbieP\CloudConvertLaravel\StorageFtp',
+			'\Lingwave\CloudConvertLaravel\StorageFtp',
 			[
 				'getMethod' => 'ftp',
 				'getPath'   => '/some/path/on/ftp/test.image.png'
@@ -100,7 +100,7 @@ abstract class BaseTest extends PHPUnit_Framework_TestCase {
 	public function mockClient()
 	{
 		$this->client = Mockery::mock(
-			'\RobbieP\CloudConvertLaravel\HttpClientInterface'
+			'\Lingwave\CloudConvertLaravel\HttpClientInterface'
 		);
 		return $this->client;
 	}
@@ -108,7 +108,7 @@ abstract class BaseTest extends PHPUnit_Framework_TestCase {
 	public function mockProcessClient()
 	{
 		$this->process_client = Mockery::mock(
-			'\RobbieP\CloudConvertLaravel\HttpClientInterface'
+			'\Lingwave\CloudConvertLaravel\HttpClientInterface'
 		);
 		return $this->process_client;
 	}
