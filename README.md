@@ -16,7 +16,7 @@ Add this to your `composer.json` dependencies:
 
 ```js
 "require": {
-   "lingwave/cloudconvert-laravel": "1.*"
+   "lingwave/cloudconvert-laravel": "4.*"
 }
 ```
 
