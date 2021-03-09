@@ -23,7 +23,7 @@ trait HttpClient
 
     public function setGuzzleAdapter()
     {
-        $this->http = new Guzzle7Adapter;
+        $this->http = new Guzzle6Adapter;
     }
 
 }
