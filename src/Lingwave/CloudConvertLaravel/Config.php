@@ -20,7 +20,7 @@ class Config {
     public function get($key)
     {
         if(! is_array($this->config) ) return null;
-        return array_get($this->config, $key, null);
+        return $this->config[$key];
     }
 
     public function toArray()

@@ -23,14 +23,7 @@ trait HttpClient
 
     public function setGuzzleAdapter()
     {
-        switch (true) {
-            case ( version_compare(Client::VERSION, '6.0.0', '<') ):
-                $this->http = new Guzzle5Adapter;
-                break;
-            case ( version_compare(Client::VERSION, '6.0.0', '>=') ):
-                $this->http = new Guzzle6Adapter;
-                break;
-        }
+        $this->http = new Guzzle7Adapter;
     }
 
 }
